@@ -2,11 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-
-#include <limits.h>
-
-#include <float.h>
 
 
 
@@ -147,13 +142,6 @@ void array_reverse(unsigned long * array, int size){
 		mem=array[i];
 		array[i]=array[(size-1)-i];
 		array[(size-1)-i]=mem;
-
-
-//	int i =0;
-//	int j = size;
-//	while(i<j){
-//		swap_long(&array[i++], &array[--j]);
-
 	}
 }
 
