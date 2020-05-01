@@ -76,10 +76,10 @@ int main (){
 	unsigned long * fibonacci_result;
 	unsigned long * fibonacci_result_copy;
 
-	fibonacci_result = fibonacci_array(10); //array di fibonacci(10)
-	int size =11;
+	fibonacci_result = fibonacci_array(39); //array di fibonacci(39)
+	int size =40;
 
-	printf("Il risultato della funzione fibonacci(10) è: %lu\n", fibonacci_result[10]);
+	printf("Il risultato della funzione fibonacci(10) è: %lu\n", fibonacci_result[39]);
 
 
 	//fibonacci_result_copy = make_copy_of_array(fibonacci_result, size);
