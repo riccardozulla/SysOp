@@ -44,11 +44,11 @@ int *process_counter;
 int *shutdown;
 
 
-sem_t * process_semaphore;
+sem_t * proc_sem;
 
-void child_function(int i){
+void child_functionA(int i){
 	while(1){
-		if (sem_wait(process_semaphore) == -1) {
+		if (sem_wait(proc_sem) == -1) {
 			perror("sem_wait");
 			exit(EXIT_FAILURE);
 		}
@@ -60,7 +60,7 @@ void child_function(int i){
 
 
 
-		if (sem_post(process_semaphore) == -1) {
+		if (sem_post(proc_sem) == -1) {
 			perror("sem_post");
 			exit(EXIT_FAILURE);
 		}
@@ -75,14 +75,14 @@ int main (int argc, char *argv[]){
 
 	int res;
 
-	process_semaphore = mmap(NULL, // NULL: è il kernel a scegliere l'indirizzo
+	proc_sem = mmap(NULL, // NULL: è il kernel a scegliere l'indirizzo
 				sizeof(sem_t) + sizeof(int), // dimensione della memory map
 				PROT_READ | PROT_WRITE, // memory map leggibile e scrivibile
 				MAP_SHARED | MAP_ANONYMOUS, // memory map condivisibile con altri processi e senza file di appoggio
 				-1,
 				0); // offset nel file
 
-	res = sem_init(process_semaphore,
+	res = sem_init(proc_sem,
 						1, // 1 => il semaforo è condiviso tra processi, 0 => il semaforo è condiviso tra threads del processo
 						1 // valore iniziale del semaforo (se mettiamo 0 che succede?)
 					  );
@@ -141,7 +141,7 @@ int main (int argc, char *argv[]){
 			exit(EXIT_FAILURE);
 
 		case 0:
-			child_function(i);
+			child_functionA(i);
 			break;
 		default:
 			break;

@@ -48,6 +48,7 @@ unsigned char * sha3_512(char * addr, unsigned int size, int * result_len_ptr);
 
 char * pathname;
 char *addr;
+
 int main(int argc, char *argv[]){
 	if (argc!=2){
 		printf("Inserire un file da processare\n");
@@ -62,7 +63,7 @@ int main(int argc, char *argv[]){
 		exit(EXIT_FAILURE);
 	}
 
-	//creamo la pipe
+	//creiamo la pipe
 	int pfd[2];
 	int res=pipe(pfd);
 	if (res==-1){
