@@ -185,7 +185,7 @@ int main(){
 
 		printf("Ho finito il mio lavoro!\nBye");
 
-		free(r);
+		//free(r);
 
 		exit(EXIT_SUCCESS);
 
