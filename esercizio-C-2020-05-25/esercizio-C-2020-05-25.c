@@ -52,8 +52,8 @@ usare le system call open(), mmap()
 
 
 
-#define FILE_SIZE (1024*1024)
-#define N 4
+#define FILE_SIZE (10)	//1024*1024
+#define N 2				//4
 
 #define CHECK_ERR(a,msg) {if ((a) == -1) { perror((msg)); exit(EXIT_FAILURE); } }
 #define CHECK_ERR_MMAP(a,msg) {if ((a) == MAP_FAILED) { perror((msg)); exit(EXIT_FAILURE); } }
